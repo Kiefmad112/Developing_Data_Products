@@ -1,0 +1,61 @@
+---
+title: "MPG Analytics"
+author: "Kiefer Maddex"
+date: '2022-05-04'
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(dplyr)
+```
+
+## MPG Analysis
+Using a online dashboard will eliminate the need for distributing files and reduces the potential of errors in replication. This app is a proof of concept for a simple scenario exemplifying the relationship between car weight, number of cylinders and MPG. All inputs can be adjusted and changed. All output are fully reactive.
+
+
+## MPG Analysis
+- Adjustable Inputs:
+  - Input 1 = Engine displacement (default 300)
+  - Input 2 = Number of cylinders (default 6)
+  
+- Checkbox: 
+  - Linear regression model (show/hide)
+  
+- Results: 
+  - Linear regression trend analysis of weight to MPG identifying number of cylinders
+
+
+## MPG Analysis - R Code
+
+```{r cars, echo = TRUE, eval = FALSE}
+library(dplyr)
+
+carmodel <- filter(mtcars, mtcars$disp <= input$slider1$, 
+                   mtcars$cyl <= input$slider2)
+
+plot(carmodel$mpg, carmodel$disp, ylab = "Engine Disp", 
+     xlab = "MPG", pch = 16, col = carmodel$cyl)
+
+model1 <- lm(disp ~ mpg, data = carmodel)
+abline(model1, col = "blue", lwd = 2, lty = 3)
+
+legend(30, 165, c("8 Cylinders", "6 Cylinders", "4 Cylinders"), 
+       pch = 16, col = c("grey", "darkmagenta", "dodgerblue"), 
+       bty = "n", cex = 1 )
+```
+
+## MPG Analysis - Graph
+
+```{r output}
+carmodel <- filter(mtcars, mtcars$disp <= 300, mtcars$cyl <= 6)
+
+plot(carmodel$mpg, carmodel$disp, ylab = "Engine Disp", xlab = "MPG", pch = 16, col = carmodel$cyl)
+
+model1 <- lm(disp ~ mpg, data = carmodel)
+abline(model1, col = "blue", lwd = 2, lty = 3)
+
+legend(30, 165, c("8 Cylinders", "6 Cylinders", "4 Cylinders"), pch = 16,
+           col = c("grey", "darkmagenta", "dodgerblue"), bty = "n", cex = 1 )
+```
+
