@@ -1,0 +1,13 @@
+name: MPG_Analysis
+title: MPG_Analysis
+username:
+account: kiefermaddex
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 6251294
+bundleId: 5879598
+url: https://kiefermaddex.shinyapps.io/MPG_Analysis/
+when: 1651874309.00892
+lastSyncTime: 1651874309.00892
+asMultiple: FALSE
+asStatic: FALSE
